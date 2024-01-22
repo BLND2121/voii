@@ -31,7 +31,6 @@ discriminator = userinfo["discriminator"]
 userid = userinfo["id"]
 
 def joiner(token, status):
-    ws = websocket.WebSocket()
     ws.connect('wss://gateway.discord.gg/?v=9&encoding=json')
     start = json.loads(ws.recv())
     heartbeat = start['d']['heartbeat_interval']
@@ -48,6 +47,3 @@ def run_joiner():
   while True:
     joiner(usertoken, status)
     time.sleep(30)
-
-keep_alive()
-run_joiner()
